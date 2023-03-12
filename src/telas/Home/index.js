@@ -2,8 +2,13 @@
 
 import React from 'react';
 
-import Topo from './componente/Topo';x 
+import Topo from './componente/Topo';
+import Produtores from './componente/Produtores';
 
 export default function Home() {
-   return <Topo />
+   return (
+      <>
+         <Produtores topo={Topo}/>
+      </>
+   )
 }
