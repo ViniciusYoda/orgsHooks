@@ -1,10 +1,11 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 
 import Home from './src/telas/Home';
 
 export default function App() {
-   return(
+   return (
       <SafeAreaView style={estilos.tela}>
          <Home />
       </SafeAreaView>

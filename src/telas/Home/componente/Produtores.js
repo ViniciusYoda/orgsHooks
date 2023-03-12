@@ -1,29 +1,26 @@
-import React { useEffecct, useState } from 'react';
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/no-unstable-nested-components */
+import React from 'react';
 import { Text, FlatList, StyleSheet } from 'react-native';
 
-import { carregaProdutores } from '../../../servicos/carregaDados';
+import useProdutores from '../../../hooks/useProdutores';
+import Produtor from './Produtor';
 
 export default function Produtores({ topo: Topo}) {
-   const [titulo, setTitulo] = useState('');
-   const [lista, setLista] = useState([]);
-   
-   useEffecct(() => {
-      const retorno = carregaProdutores();
-      setTitulo(retorno.titulo);
-      setLista(retorno.lista)
-   }, []);
-
+   const [titulo, lista] = useProdutores();
    const TopoLista = () => {
-      return <>
-         <Topo/>
-         <Text style={estilos.titulo}>{ titulo }</Text>
+      return (
+         <>
+            <Topo/>
+            <Text style={estilos.titulo}>{ titulo }</Text>
          </>
+      )
    }
 
    return (
       <FlatList
          data={lista}
-         renderItem={({ item: { nome }}) => <Text>{ nome }</Text>}
+         renderItem={({item}) => <Produtor {...item}/>}
          keyExtractor={(nome) => nome}
          ListHeaderComponent={TopoLista}
       />
